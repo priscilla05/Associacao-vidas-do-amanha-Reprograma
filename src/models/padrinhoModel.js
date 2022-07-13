@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose')
 
-const criancaSchema = mongoose.Schema({
+const padrinhoSchema = mongoose.Schema({
     _id: {
         type: mongoose.Types.ObjectId,
         default: mongoose.Types.ObjectId
@@ -17,19 +17,19 @@ const criancaSchema = mongoose.Schema({
         unique: true
     },
 
-    age:{
+    telephone:{
         type: Number,
-        required: true,
-        unique: true
+        required: true
     },
 
-    gender:{
+    endereco:{
         type: String,
-        default: "Não informado",   
+        required: true
     }
     
-},{timestamps:true})
+}, {timestamps: true})
 
-const Model = mongoose.model('crianca',criancaSchema)
+
+const Model = mongoose.model('padrinho',padrinhoSchema)
 
 module.exports = Model

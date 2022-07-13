@@ -1,9 +1,9 @@
-const CriancasModel = require('../models/criancasModel')
+const padrinhoModel = require('../models/padrinhoModel')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
 
 
-const createCrianca = async (req, res) => {
+const createPadrinho = async (req, res) => {
    try {
     const authHeader =req.get('authorization')
     if(!authHeader){
@@ -16,22 +16,23 @@ const createCrianca = async (req, res) => {
         return res.status(403).send("Sorry, you are not authorized to access this")
      }
 
-      const { name, cpf, age, gender } = req.body
+      const { name, cpf, telephone } = req.body
 
-      const newCrianca = new CriancasModel({
+      const newPadrinho = new padrinhoModel({
         name, cpf, age, gender
       })
 
-      const savedCrianca = await newCrianca.save()
+      const savedPadrinho = await newPadrinho.save()
 
-      res.status(201).json(savedCrianca)
+      res.status(201).json(savedPadrinho)
    })
 }catch (error) {
   console.error(error)
   res.status(500).json({ message: error.message })
 }
 }
-const findAllCriancas = async (req, res) => {
+
+const getAllPadrinhos = async (req, res) => {
   try {
     const authHeader =req.get('authorization')
     if(!authHeader){
@@ -43,8 +44,8 @@ const findAllCriancas = async (req, res) => {
       if(erro){
         return res.status(403).send("Sorry, you are not authorized to access this")
      }
-      const allCriancas = await CriancasModel.find()
-      res.status(200).json(allCriancas)
+      const allPadrinhos = await padrinhoModel.find()
+      res.status(200).json(allPadrinhos)
     })
  
    
@@ -55,7 +56,7 @@ const findAllCriancas = async (req, res) => {
      
 }
 
-const findCriancaById = async (req, res) => {
+const findById = async (req, res) => {
   try {
    const authHeader =req.get('authorization')
    if(!authHeader){
@@ -68,8 +69,8 @@ const findCriancaById = async (req, res) => {
        return res.status(403).send('Sorry, you are not authorized to access this')
     }
 
-    const findCrianca = await CriancasModel.findById(req.params.id)
-    res.status(200).json(findCrianca)
+    const findPadrinho = await padrinhoModel.findById(req.params.id)
+    res.status(200).json(findPadrinho)
   })
 }catch (error) {
  console.error(error)
@@ -77,24 +78,25 @@ const findCriancaById = async (req, res) => {
 }
 }
 
-const updateCrianca = async (req, res) => {
+const updatePadrinho = async (req, res) => {
   try {
-    const { name, cpf, age, gender } = req.body
-    const updatedCrianca = await CriancaModel
+    const { name, cpf, telephone } = req.body
+    const updatedPadrinho = await padrinhoModel
     .findByIdAndUpdate(req.params.id, {
-      name, cpf, age, gender
+      name, cpf, telephone
     })
-    res.status(200).json(updatedCrianca)
+    res.status(200).json(updatedPadrinho)
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: error.message })
   }
 }
-const deleteCriancaById = async (req, res) => { 
+
+const deleteById = async (req, res) => { 
   try {
       const { id } = req.params
-      await CriancasModel.findByIdAndDelete(id)
-      const message = "A criança com esse id foi excluída com sucesso."
+      await padrinhoModel.findByIdAndDelete(id)
+      const message = "O padrinho com esse id foi excluída com sucesso."
      res.status(200).json({ message })
   } catch (error) {
     console.error(error)
@@ -102,10 +104,11 @@ const deleteCriancaById = async (req, res) => {
   }
 }
 
+
 module.exports =  {
-    createCrianca,
-    findAllCriancas,
-    findCriancaById,
-    updateCrianca,
-    deleteCriancaById
-    }
+    createPadrinho,
+    getAllPadrinhos,
+    findById,
+    updatePadrinho,
+    deleteById
+  }

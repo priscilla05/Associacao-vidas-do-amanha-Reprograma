@@ -4,10 +4,14 @@ const cors = require('cors')
 const mongoose = require('./database/mongooseConnect')
 const criancaRoutes = require('./router/criancaRoutes')
 const padrinhoRoutes = require('./router/padrinhoRoutes')
-const feiraRoutes = require('./router/feiraRoutures')
+//const index = require('./index/router') é para colocar?
+
 const usersRoutes = require('./router/usersRoutes')
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('../swagger/swagger_output.json');
 
 const app = express()
+app.use('/minha-rota-de-documentacao', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 
 app.use(express.json())
@@ -18,6 +22,6 @@ mongoose.connect()
 app.use(criancaRoutes)
 app.use(padrinhoRoutes)
 app.use(usersRoutes)
-//app.use(feiraRoutes)
+
 
 module.exports = app

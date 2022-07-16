@@ -26,6 +26,11 @@ const criancaSchema = mongoose.Schema({
     gender:{
         type: String,
         default: "Não informado",   
+    },
+    itensDeNecessidade:{
+        type: Array,
+        required: true
+
     }
     
 },{timestamps:true})

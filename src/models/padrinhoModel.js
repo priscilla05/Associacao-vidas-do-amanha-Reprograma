@@ -22,7 +22,7 @@ const padrinhoSchema = mongoose.Schema({
         required: true
     },
 
-    endereco:{
+    adress:{
         type: String,
         required: true
     }

@@ -2,7 +2,7 @@ const CriancasModel = require('../models/criancasModel')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET
 
-//CRIAR findItensDeNecessidade
+
 const createCrianca = async (req, res) => {
    try {
     const authHeader =req.get('authorization')

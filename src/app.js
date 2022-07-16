@@ -20,10 +20,10 @@ app.use(cors())
 
 mongoose.connect()
 
-app.use('/',criancaRoutes)
-app.use('/',padrinhoRoutes)
-app.use('/',usersRoutes)
-app.use('/, index')
+app.use(criancaRoutes)
+app.use(padrinhoRoutes)
+app.use(usersRoutes)
+app.use(index)
 
 
 module.exports = app

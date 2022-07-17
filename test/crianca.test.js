@@ -5,7 +5,9 @@ describe('Get route test', () => {
         "name": "Ana Maria",
         "cpf": 58996523114,
         "age": 4,
-        "gender": "female"
+        "gender": "female",
+        "itensDeNecessidade": ["arroz","feijao","leite", "ovos","aveia","frutas"]
+
     })
 
     it("Deve chamar o schema e retornar o nome da criança correto", () => {
@@ -23,6 +25,9 @@ describe('Get route test', () => {
     it("Deve chamar o schema e retornar o gênero da criança correto", () => {
         expect(crianca.gender).toBe("female")
     })
+    it("Deve chamar o schema e retornar itens de necessidade como verdadeiro", () => {
+        expect(crianca.itensDeNecessidade).toBe(true)
+    })
 })
 
 describe("Create route test", () => {
@@ -30,7 +35,9 @@ describe("Create route test", () => {
         "name": "Ana Maria",
         "cpf": 58996523114,
         "age": 4,
-        "gender": "female"
+        "gender": "female",
+        "itensDeNecessidade": true
+
     })
 
     it("Deve criar no banco de dados um novo cadastro de criança", () => {
@@ -48,7 +55,8 @@ describe("Update route test", () => {
             "name": "Ana Maria",
             "cpf": 58996523114,
             "age": 4,
-            "gender": "female"
+            "gender": "female",
+            "itensDeNecessidade": true
 
         })
         crianca.name = "novo nome"
@@ -63,8 +71,8 @@ describe("Delete route test", () => {
             "name": "Ana Maria",
             "cpf": 58996523114,
             "age": 4,
-            "gender": "female"
-
+            "gender": "female",
+            "itensDeNecessidade": true
         })
         crianca.save().then((dados) => {
             crianca.delete().then((dados) => {

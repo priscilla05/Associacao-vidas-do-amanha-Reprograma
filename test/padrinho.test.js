@@ -5,7 +5,7 @@ describe('Get route test', () => {
         "name": "Paulo Antonio",
         "cpf": 11466987551,
         "telephone": 8898744130,
-        "endereco": "Av.Ruy Barbosa, 456"
+        "adress": "Av.Ruy Barbosa, 456"
     })
 
     it("Deve chamar o schema e retornar o nome do padrinho correto", () => {
@@ -21,7 +21,7 @@ describe('Get route test', () => {
     })
 
     it("Deve chamar o schema e retornar o endereço correto do padrinho", () => {
-        expect(padrinho.endereco).toBe("Av.Ruy Barbosa, 456")
+        expect(padrinho.adress).toBe("Av.Ruy Barbosa, 456")
     })
 })
 
@@ -30,7 +30,7 @@ describe("Create route test", () => {
         "name": "Paulo Antonio",
         "cpf": 11466987551,
         "telephone": 8898744130,
-        "endereco": "Av.Ruy Barbosa, 456"
+        "adress": "Av.Ruy Barbosa, 456"
     })
 
     it("Deve criar no banco de dados um novo cadastro de padrinho", () => {
@@ -48,7 +48,7 @@ describe("Update route test", () => {
             "name": "Paulo Antonio",
             "cpf": 11466987551,
             "telephone": 8898744130,
-            "endereco": "Av.Ruy Barbosa, 456"
+            "adress": "Av.Ruy Barbosa, 456"
 
 
         })
@@ -64,7 +64,7 @@ describe("Delete route test", () => {
             "name": "Paulo Antonio",
             "cpf": 11466987551,
             "telephone": 8898744130,
-            "endereco": "Av.Ruy Barbosa, 456"
+            "adress": "Av.Ruy Barbosa, 456"
 
         })
         padrinho.save().then((dados) => {

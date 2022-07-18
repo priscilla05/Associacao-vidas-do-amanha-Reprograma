@@ -169,7 +169,7 @@
         }
       }
     },
-    "/crianca/itensDeNecessidade": {
+    "/crianca/condicao": {
       "get": {
         "description": "",
         "parameters": [],

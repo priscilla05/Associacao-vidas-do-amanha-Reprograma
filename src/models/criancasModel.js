@@ -20,16 +20,17 @@ const criancaSchema = mongoose.Schema({
     age:{
         type: Number,
         required: true,
-        unique: true
+        
     },
 
     gender:{
         type: String,
         default: "Não informado",   
     },
-    itensDeNecessidade:{
-        type: Array,
-        required: true
+    condicao:{
+        type: Boolean,
+        required: true,
+        default: false
 
     }
     

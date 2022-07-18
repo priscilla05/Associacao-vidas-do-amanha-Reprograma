@@ -40,33 +40,10 @@ const create = (req, res) => {
    
   }
  
-  const getAll = (req, res) => {
-    Users.find(function (err, users) {
-      if (err) {
-        res.status(500).send({message: err.message})
-      }
-      res.status(201).send(users)
-    })
-  }
  
-  const deleteById = async (req, res) => {
-    try {
- 
-      const { id } = req.params
-      await Users.findByIdAndDelete(id)
-     
-      res.status(200).json({message: "Usuário deletado!"})
-    } catch (error) {
-      console.error(error)
-      res.status(500).json({message: error.message})
-    }
-  }
- 
-  
    
   module.exports = {
     create,
-    login,
-    getAll,
-    deleteById
+    login
+    
   }

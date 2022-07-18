@@ -120,7 +120,7 @@ const deleteById = async (req, res) => {
       const { id } = req.params
       await padrinhoModel.findByIdAndDelete(id)
       const message = "O cadastro do padrinho com esse id foi excluído."
-      res.status(200).json({ message })
+      res.status(200).json({ message:message })
     })
   } catch (error) {
     console.error(error)

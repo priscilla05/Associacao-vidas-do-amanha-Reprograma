@@ -20,9 +20,9 @@ app.use(cors())
 
 mongoose.connect()
 
-app.use(criancaRoutes)
-app.use(padrinhoRoutes)
-app.use(usersRoutes)
+app.use("/vidasDoAmanha",criancaRoutes)
+app.use("/vidasDoAmanha",padrinhoRoutes)
+app.use("/vidasDoAmanha/users",usersRoutes)
 app.use(index)
 
 

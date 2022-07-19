@@ -5,7 +5,8 @@ describe('Get route test', () => {
         "name": "Paulo Antonio",
         "cpf": 11466987551,
         "telephone": 8898744130,
-        "adress": "Av.Ruy Barbosa, 456"
+        "adress": "Av.Ruy Barbosa, 456",
+        "status":"true"
     })
 
     it("Deve chamar o schema e retornar o nome do padrinho correto", () => {
@@ -23,6 +24,10 @@ describe('Get route test', () => {
     it("Deve chamar o schema e retornar o endereço correto do padrinho", () => {
         expect(padrinho.adress).toBe("Av.Ruy Barbosa, 456")
     })
+
+    it("Deve chamar o schema e retornar o endereço correto do padrinho", () => {
+        expect(padrinho.status).toBe(true)
+    })
 })
 
 describe("Create route test", () => {
@@ -30,7 +35,8 @@ describe("Create route test", () => {
         "name": "Paulo Antonio",
         "cpf": 11466987551,
         "telephone": 8898744130,
-        "adress": "Av.Ruy Barbosa, 456"
+        "adress": "Av.Ruy Barbosa, 456",
+        "status":"true"
     })
 
     it("Deve criar no banco de dados um novo cadastro de padrinho", () => {
@@ -48,7 +54,8 @@ describe("Update route test", () => {
             "name": "Paulo Antonio",
             "cpf": 11466987551,
             "telephone": 8898744130,
-            "adress": "Av.Ruy Barbosa, 456"
+            "adress": "Av.Ruy Barbosa, 456",
+            "status":"true"
 
 
         })
@@ -64,7 +71,8 @@ describe("Delete route test", () => {
             "name": "Paulo Antonio",
             "cpf": 11466987551,
             "telephone": 8898744130,
-            "adress": "Av.Ruy Barbosa, 456"
+            "adress": "Av.Ruy Barbosa, 456",
+            "status":"true"
 
         })
         padrinho.save().then((dados) => {

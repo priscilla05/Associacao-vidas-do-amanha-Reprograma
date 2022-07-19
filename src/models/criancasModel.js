@@ -30,6 +30,7 @@ const criancaSchema = mongoose.Schema({
     condition:{
         type: Boolean,
         required: true,
+        default: true
         
 
     }

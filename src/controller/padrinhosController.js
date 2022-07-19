@@ -52,7 +52,7 @@ const getAllPadrinhos = async (req, res) => {
         const element = allPadrinhos[index]
         if(element.status===false){
           
-          allPadrinhos.splice(index, 1)
+          allPadrinhos.splice(index)
         }
         
       }

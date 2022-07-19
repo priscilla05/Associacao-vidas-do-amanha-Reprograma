@@ -1,5 +1,7 @@
 const padrinhoModel = require('../models/padrinhoModel')
 const jwt = require('jsonwebtoken')
+const { all } = require('../router/usersRoutes')
+const { login } = require('./usersController')
 const SECRET = process.env.SECRET
 
 
@@ -16,10 +18,10 @@ const createPadrinho = async (req, res) => {
         return res.status(403).send("Sorry, you are not authorized to access this")
       }
 
-      const { name, cpf, telephone, adress } = req.body
+      const { name, cpf, telephone, adress,status } = req.body
 
       const newPadrinho = new padrinhoModel({
-        name, cpf, telephone, adress
+        name, cpf, telephone, adress, status
       })
 
       const savedPadrinho = await newPadrinho.save()
@@ -45,11 +47,19 @@ const getAllPadrinhos = async (req, res) => {
         return res.status(403).send("Sorry, you are not authorized to access this")
       }
       const allPadrinhos = await padrinhoModel.find()
+      
+      for (let index = 0; index < allPadrinhos.length; index++) {
+        const element = allPadrinhos[index]
+        if(element.status===false){
+          
+          allPadrinhos.splice(index, 1)
+        }
+        
+      }
       res.status(200).json(allPadrinhos)
-    })
-
-
-  } catch (error) {
+      })
+     
+    } catch (error) {
     console.error(error)
     res.status(500).json({ message: error.message })
   }
@@ -90,10 +100,10 @@ const updatePadrinho = async (req, res) => {
       if (erro) {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
-      const { name, cpf, telephone, adress } = req.body
+      const { name, cpf, telephone, adress,status } = req.body
       const updatedPadrinho = await padrinhoModel
         .findByIdAndUpdate(req.params.id, {
-          name, cpf, telephone, adress
+          name, cpf, telephone, adress, status
         })
       res.status(200).json(updatedPadrinho)
 
@@ -118,7 +128,12 @@ const deleteById = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
       const { id } = req.params
-      await padrinhoModel.findByIdAndDelete(id)
+     
+        await padrinhoModel.findByIdAndUpdate(id,{
+          status:false
+        })
+
+        
       const message = "O cadastro do padrinho com esse id foi excluído."
       res.status(200).json({ message:message })
     })

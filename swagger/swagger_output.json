@@ -11,7 +11,7 @@
     "http"
   ],
   "paths": {
-    "/crianca": {
+    "/vidasDoAmanha/crianca": {
       "post": {
         "description": "",
         "parameters": [
@@ -31,6 +31,9 @@
                   "example": "any"
                 },
                 "gender": {
+                  "example": "any"
+                },
+                "condicao": {
                   "example": "any"
                 }
               }
@@ -71,7 +74,7 @@
         }
       }
     },
-    "/crianca/{id}": {
+    "/vidasDoAmanha/crianca/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -80,52 +83,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "cpf": {
-                  "example": "any"
-                },
-                "age": {
-                  "example": "any"
-                },
-                "gender": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -169,14 +126,78 @@
         }
       }
     },
-    "/crianca/condicao": {
+    "/vidasDoAmanha/condicao": {
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
-    "/padrinho": {
+    "/vidasDoAmanha/condicao/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "cpf": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "condicao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vidasDoAmanha/padrinho": {
       "post": {
         "description": "",
         "parameters": [
@@ -236,7 +257,7 @@
         }
       }
     },
-    "/padrinho/{id}": {
+    "/vidasDoAmanha/padrinho/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -334,7 +355,7 @@
         }
       }
     },
-    "/user/": {
+    "/vidasDoAmanha/users/user/": {
       "post": {
         "description": "",
         "parameters": [
@@ -359,21 +380,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       }
     },
-    "/user/login": {
+    "/vidasDoAmanha/users/user/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -409,23 +418,13 @@
         }
       }
     },
-    "/user/{id}": {
-      "delete": {
+    "/": {
+      "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }

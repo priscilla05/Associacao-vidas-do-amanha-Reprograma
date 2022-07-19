@@ -8,7 +8,7 @@ const criancaSchema = mongoose.Schema({
     name:{
         type: String, 
         required: true,
-        unique: true,
+        
     },
 
     cpf:{

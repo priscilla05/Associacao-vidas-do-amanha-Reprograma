@@ -8,7 +8,7 @@ const padrinhoSchema = mongoose.Schema({
     name:{
         type: String, 
         required: true,
-        unique: true,
+        
     },
 
     cpf:{
@@ -25,7 +25,13 @@ const padrinhoSchema = mongoose.Schema({
     adress:{
         type: String,
         required: true
+    },
+
+    status:{type: Boolean,
+        required: true
+
     }
+    
     
 }, {timestamps: true})
 

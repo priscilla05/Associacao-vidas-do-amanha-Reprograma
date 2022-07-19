@@ -33,7 +33,7 @@
                 "gender": {
                   "example": "any"
                 },
-                "condicao": {
+                "condition": {
                   "example": "any"
                 }
               }
@@ -126,7 +126,7 @@
         }
       }
     },
-    "/vidasDoAmanha/condicao": {
+    "/vidasDoAmanha/condition": {
       "get": {
         "description": "",
         "parameters": [],
@@ -146,7 +146,7 @@
         }
       }
     },
-    "/vidasDoAmanha/condicao/{id}": {
+    "/vidasDoAmanha/condition/{id}": {
       "patch": {
         "description": "",
         "parameters": [
@@ -174,7 +174,7 @@
                 "gender": {
                   "example": "any"
                 },
-                "condicao": {
+                "condition": {
                   "example": "any"
                 }
               }

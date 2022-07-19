@@ -27,7 +27,7 @@ const criancaSchema = mongoose.Schema({
         type: String,
         default: "Não informado",   
     },
-    condicao:{
+    condition:{
         type: Boolean,
         required: true,
         default: false

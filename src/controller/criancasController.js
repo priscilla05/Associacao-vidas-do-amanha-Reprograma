@@ -16,10 +16,10 @@ const createCrianca = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
 
-      const { name, cpf, age, gender, condicao } = req.body
+      const { name, cpf, age, gender,condition } = req.body
 
       const newCrianca = new CriancasModel({
-        name, cpf, age, gender, condicao
+        name, cpf, age, gender, condition
       })
 
       const savedCrianca = await newCrianca.save()
@@ -73,7 +73,7 @@ const findCriancaById = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
-const condicao = async (req, res) => {
+const condition = async (req, res) => {
 
   try {
     const authHeader = req.get('authorization')
@@ -87,8 +87,8 @@ const condicao = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
 
- const findCondicao = await CriancasModel.find({condicao:true})
- res.status(200).json(findCondicao)
+ const findCondition = await CriancasModel.find({condition:true})
+ res.status(200).json(findCondition)
 })
 } catch (error) {
   res.status(500).json({ message: error.message })
@@ -108,10 +108,10 @@ const updateCrianca = async (req, res) => {
       if (erro) {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
-      const { name, cpf, age, gender,condicao } = req.body
+      const { name, cpf, age, gender,condition } = req.body
       const updatedCrianca = await CriancasModel
         .findByIdAndUpdate(req.params.id, {
-          name, cpf, age, gender, condicao
+          name, cpf, age, gender, condition
         })
       res.status(200).json(updatedCrianca)
 
@@ -152,5 +152,5 @@ module.exports = {
   findCriancaById,
   updateCrianca,
   deleteCriancaById,
-  condicao
+  condition
 }

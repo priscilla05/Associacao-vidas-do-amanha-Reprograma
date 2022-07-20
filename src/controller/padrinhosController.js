@@ -134,7 +134,7 @@ const deleteById = async (req, res) => {
         })
 
         
-      const message = "O cadastro do padrinho com esse id foi excluído."
+      const message = "O cadastro do padrinho com esse id foi inativado."
       res.status(200).json({ message:message })
     })
   } catch (error) {

@@ -73,7 +73,7 @@ const findCriancaById = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
-const condition = async (req, res) => {
+const getCondition = async (req, res) => {
 
   try {
     const authHeader = req.get('authorization')
@@ -86,8 +86,9 @@ const condition = async (req, res) => {
       if (erro) {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
-
- const findCondition = await CriancasModel.find({condition:true})
+const condition= req.query.condition
+ const findCondition = await CriancasModel.find({condition:{$eq:condition}})
+ 
  res.status(200).json(findCondition)
 })
 } catch (error) {
@@ -122,6 +123,33 @@ const updateCrianca = async (req, res) => {
   }
 }
 
+const updateCondition = async (req, res) => {
+  try {
+    const authHeader = req.get('authorization')
+    if (!authHeader) {
+      return res.status(401).send('where is the authorization?')
+    }
+
+    const token = authHeader.split(' ')[1]
+    await jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send('Sorry, you are not authorized to access this')
+      }
+      const { condition } = req.body
+      const updatedCondition = await CriancasModel
+        .findByIdAndUpdate(req.params.id, {
+          condition
+        })
+      res.status(200).json(updatedCondition)
+
+    })
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
 const deleteCriancaById = async (req, res) => {  
   try {
     const authHeader = req.get('authorization')
@@ -150,7 +178,10 @@ module.exports = {
   createCrianca,
   findAllCriancas,
   findCriancaById,
+  getCondition,
   updateCrianca,
-  deleteCriancaById,
-  condition
+  updateCondition,
+  deleteCriancaById
+  
+
 }

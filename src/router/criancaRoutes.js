@@ -6,8 +6,9 @@ const router = express.Router()
 router.post("/crianca", controller.createCrianca)
 router.get("/crianca", controller.findAllCriancas)
 router.get("/crianca/:id", controller.findCriancaById)
-router.get("/condition", controller.condition)
-router.patch("/condition/:id", controller.updateCrianca)
+router.get("/condition", controller.getCondition)
+router.put("/condition/:id", controller.updateCrianca)
+router.patch("/condition/:id", controller.updateCondition)
 router.delete("/crianca/:id", controller.deleteCriancaById)
 
 

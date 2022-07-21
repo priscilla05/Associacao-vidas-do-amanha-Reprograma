@@ -66,6 +66,40 @@ const getAllPadrinhos = async (req, res) => {
 
 }
 
+const getAllPadrinhosInativos = async (req, res) => {
+  try {
+    const authHeader = req.get('authorization')
+    if (!authHeader) {
+      return res.status(401).send('where is the authorization?')
+    }
+
+    const token = authHeader.split(' ')[1]
+    await jwt.verify(token, SECRET, async function (erro) {
+      if (erro) {
+        return res.status(403).send("Sorry, you are not authorized to access this")
+      }
+      const allPadrinhos = await padrinhoModel.find()
+      let padrinhosInativos = []
+      for (let index = 0; index < allPadrinhos.length; index++) {
+        let element = allPadrinhos[index]
+        if(element.status===false){
+          
+          padrinhosInativos.push(element)
+        }
+        
+      }
+      res.status(200).json(padrinhosInativos)
+      })
+     
+    } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+
+}
+
+
+
 const findById = async (req, res) => {
   try {
     const authHeader = req.get('authorization')
@@ -80,6 +114,9 @@ const findById = async (req, res) => {
       }
 
       const findPadrinho = await padrinhoModel.findById(req.params.id)
+      if(findPadrinho.status ===false){
+        res.status(404).json({message: 'Padrinho não encontrado na base'})
+      }
       res.status(200).json(findPadrinho)
     })
   } catch (error) {
@@ -147,6 +184,7 @@ const deleteById = async (req, res) => {
 module.exports = {
   createPadrinho,
   getAllPadrinhos,
+  getAllPadrinhosInativos,
   findById,
   updatePadrinho,
   deleteById

@@ -47,16 +47,16 @@ const getAllPadrinhos = async (req, res) => {
         return res.status(403).send("Sorry, you are not authorized to access this")
       }
       const allPadrinhos = await padrinhoModel.find()
-      console.log("Esses são os padrinhos" +allPadrinhos);
+      let padrinhosAtivos = []
       for (let index = 0; index < allPadrinhos.length; index++) {
-        const element = allPadrinhos[index]
-        if(element.status===false){
+        let element = allPadrinhos[index]
+        if(element.status===true){
           
-          allPadrinhos.splice(index)
+          padrinhosAtivos.push(element)
         }
         
       }
-      res.status(200).json(allPadrinhos)
+      res.status(200).json(padrinhosAtivos)
       })
      
     } catch (error) {

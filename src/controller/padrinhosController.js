@@ -114,6 +114,9 @@ const findById = async (req, res) => {
       }
 
       const findPadrinho = await padrinhoModel.findById(req.params.id)
+      if(findPadrinho == null){
+        res.status(404).json({message: 'Padrinho não encontrado na base'})
+      }
       if(findPadrinho.status ===false){
         res.status(404).json({message: 'Padrinho não encontrado na base'})
       }

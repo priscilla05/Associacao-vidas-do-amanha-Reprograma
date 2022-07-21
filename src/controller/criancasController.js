@@ -66,6 +66,9 @@ const findCriancaById = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
       const findCrianca = await CriancasModel.findById(req.params.id)
+      if(findCrianca == null){
+        res.status(404).json({message: 'Criança não encontrada na base'})
+      }
       res.status(200).json(findCrianca)
     })
   } catch (error) {

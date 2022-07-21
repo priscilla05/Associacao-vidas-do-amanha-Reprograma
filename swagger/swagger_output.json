@@ -33,7 +33,7 @@
                 "gender": {
                   "example": "any"
                 },
-                "condicao": {
+                "situation": {
                   "example": "any"
                 }
               }
@@ -126,7 +126,7 @@
         }
       }
     },
-    "/vidasDoAmanha/condicao": {
+    "/vidasDoAmanha/situation": {
       "get": {
         "description": "",
         "parameters": [],
@@ -146,7 +146,7 @@
         }
       }
     },
-    "/vidasDoAmanha/condicao/{id}": {
+    "/vidasDoAmanha/situation/{id}": {
       "patch": {
         "description": "",
         "parameters": [
@@ -174,7 +174,7 @@
                 "gender": {
                   "example": "any"
                 },
-                "condicao": {
+                "situation": {
                   "example": "any"
                 }
               }
@@ -217,6 +217,9 @@
                   "example": "any"
                 },
                 "adress": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 }
               }
@@ -308,6 +311,9 @@
                   "example": "any"
                 },
                 "adress": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 }
               }

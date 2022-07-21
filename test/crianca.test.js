@@ -6,7 +6,7 @@ describe('Get route test', () => {
         "cpf": 58996523114,
         "age": 4,
         "gender": "female",
-        "condicao": true
+        "situation": true
 
     })
 
@@ -25,8 +25,8 @@ describe('Get route test', () => {
     it("Deve chamar o schema e retornar o gênero da criança correto", () => {
         expect(crianca.gender).toBe("female")
     })
-    it("Deve chamar o schema e retornar a condicao como verdadeiro", () => {
-        expect(crianca.condicao).toBe(true)
+    it("Deve chamar o schema e retornar a situation como verdadeiro", () => {
+        expect(crianca.situation).toBe(true)
     })
 })
 
@@ -36,7 +36,7 @@ describe("Create route test", () => {
         "cpf": 58996523114,
         "age": 4,
         "gender": "female",
-        "condicao": true
+        "situation": true
 
     })
 
@@ -56,7 +56,7 @@ describe("Update route test", () => {
             "cpf": 58996523114,
             "age": 4,
             "gender": "female",
-            "condicao": true
+            "situation": true
 
         })
         crianca.name = "novo nome"
@@ -72,7 +72,7 @@ describe("Delete route test", () => {
             "cpf": 58996523114,
             "age": 4,
             "gender": "female",
-            "condicao": true
+            "situation": true
         })
         crianca.save().then((dados) => {
             crianca.delete().then((dados) => {

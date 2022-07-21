@@ -1,7 +1,7 @@
 const padrinhoModel = require('../models/padrinhoModel')
 const jwt = require('jsonwebtoken')
-const { all } = require('../router/usersRoutes')
-const { login } = require('./usersController')
+//const { all } = require('../router/usersRoutes')
+//const { login } = require('./usersController')
 const SECRET = process.env.SECRET
 
 
@@ -47,7 +47,7 @@ const getAllPadrinhos = async (req, res) => {
         return res.status(403).send("Sorry, you are not authorized to access this")
       }
       const allPadrinhos = await padrinhoModel.find()
-      
+      console.log("Esses são os padrinhos" +allPadrinhos);
       for (let index = 0; index < allPadrinhos.length; index++) {
         const element = allPadrinhos[index]
         if(element.status===false){

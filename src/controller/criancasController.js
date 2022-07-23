@@ -90,7 +90,21 @@ const situation = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
 
- const findSituation = await CriancasModel.find({situation:true})
+      const { situation } = req.query;
+      const findSituation = await CriancasModel.find({
+        situation: situation,
+      });
+      if (!findSituation.length && situation == "true") {
+        return res.status(404).json({ 
+          message: "situação não encontrada" 
+        });
+      }
+      if (findSituation.length < 1 && situation == "false") {
+        return res.status(404).json({
+          message: "situação não encontrada" 
+        });
+      }
+ 
  res.status(200).json(findSituation)
 })
 } catch (error) {
@@ -112,10 +126,11 @@ const updateCrianca = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
       const { name, cpf, age, gender,situation } = req.body
-      const updatedCrianca = await CriancasModel
+       await CriancasModel
         .findByIdAndUpdate(req.params.id, {
           name, cpf, age, gender, situation
         })
+        const updatedCrianca = await CriancasModel.findById(req.params.id)
       res.status(200).json(updatedCrianca)
 
     })

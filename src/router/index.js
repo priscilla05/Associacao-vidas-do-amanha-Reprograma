@@ -4,7 +4,7 @@ const router = express.Router();
  
 router.get("/", function (req, res) {
     res.status(200).send({
-        title: "Reprograma-Projeto-Livre",
+        title: "Associação vidas do Amanhã",
         version: "1.0.0"
     })
 });

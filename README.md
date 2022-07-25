@@ -11,8 +11,8 @@ A Associação Vidas do Amanhã (AVA) é o projeto de conclusão do curso de Bac
 
 O Objetivo deste projeto é cadastrar pessoas que tenham o desejo de apadrinhar e ajudar mensalmente, através de cestas básicas, as crianças que estejam em tratamento contra o câncer.
 
-Acesse a aplicação  [aqui](https://associacao-vidas-do-amanha.herokuapp.com/)|
-Acesse a documentação [aqui](https://associacao-vidas-do-amanha.herokuapp.com/minha-rota-de-documentacao/#/)
+Acesse a aplicação  [aqui](https://associacao-vidas-do-amanha.herokuapp.com/)  |
+Acesse a documentação [aqui](https://associacao-vidas-do-amanha.herokuapp.com/minha-rota-de-documentacao/)
 
 
 
@@ -116,7 +116,7 @@ Acesse a documentação [aqui](https://associacao-vidas-do-amanha.herokuapp.com/
 
 Rotas de crianças
 ```
-verbo |   rota       | função
+ verbo |   rota       | função
 -----------------------------------------------------
 get   | /crianca     |listar todas as crianças
 get   | /crianca/:id | retornar criança por id

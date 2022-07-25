@@ -11,4 +11,3 @@ router.get("/", function (req, res) {
  
 module.exports = router;
 
-//tenho q colocar mais coisas aqui?

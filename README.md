@@ -14,3 +14,18 @@ O Objetivo deste projeto é cadastrar pessoas que tenham o desejo de apadrinhar 
 Acesse a aplicação  [aqui](https://associacao-vidas-do-amanha.herokuapp.com/)
 
 
+## Tecnologias e Pacotes 
+
+* Git
+* Visual Studio Code
+* Node js
+* Postman
+* Mongo Atlas
+* Heroku
+* Express
+* npm
+* dotenv
+*  mongoose
+*  bcrypt
+*  jsonwebtoken
+*  jest

@@ -66,8 +66,8 @@ const findCriancaById = async (req, res) => {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
       const findCrianca = await CriancasModel.findById(req.params.id)
-      if(findCrianca == null){
-        res.status(404).json({message: 'Criança não encontrada na base'})
+      if (findCrianca == null) {
+        res.status(404).json({ message: 'Criança não encontrada na base' })
       }
       res.status(200).json(findCrianca)
     })
@@ -95,21 +95,21 @@ const situation = async (req, res) => {
         situation: situation,
       });
       if (!findSituation.length && situation == "true") {
-        return res.status(404).json({ 
-          message: "situação não encontrada" 
+        return res.status(404).json({
+          message: "situação não encontrada"
         });
       }
       if (findSituation.length < 1 && situation == "false") {
         return res.status(404).json({
-          message: "situação não encontrada" 
+          message: "situação não encontrada"
         });
       }
- 
- res.status(200).json(findSituation)
-})
-} catch (error) {
-  res.status(500).json({ message: error.message })
-}
+
+      res.status(200).json(findSituation)
+    })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
 }
 
 
@@ -125,12 +125,12 @@ const updateCrianca = async (req, res) => {
       if (erro) {
         return res.status(403).send('Sorry, you are not authorized to access this')
       }
-      const { name, cpf, age, gender,situation } = req.body
-       await CriancasModel
+      const { name, cpf, age, gender, situation } = req.body
+      await CriancasModel
         .findByIdAndUpdate(req.params.id, {
           name, cpf, age, gender, situation
         })
-        const updatedCrianca = await CriancasModel.findById(req.params.id)
+      const updatedCrianca = await CriancasModel.findById(req.params.id)
       res.status(200).json(updatedCrianca)
 
     })
@@ -140,7 +140,7 @@ const updateCrianca = async (req, res) => {
   }
 }
 
-const deleteCriancaById = async (req, res) => {  
+const deleteCriancaById = async (req, res) => {
   try {
     const authHeader = req.get('authorization')
     if (!authHeader) {

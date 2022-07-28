@@ -99,7 +99,6 @@ const getAllPadrinhosInativos = async (req, res) => {
 }
 
 
-
 const findById = async (req, res) => {
   try {
     const authHeader = req.get('authorization')
